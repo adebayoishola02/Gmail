@@ -1,0 +1,27 @@
+{
+    "24hrs_prior": {
+        "sms": "This is a friendly reminder that your Automated Trucking Monthly Management fee is due tomorrow. Please login to your portal to pay.",
+        "subject": "Automated Trucking Reminder – Monthly Management Fee Due Tomorrow",
+        "htmlBody": "<p>This is a friendly reminder that your <strong>Monthly Management Fee</strong> is due tomorrow. Please log in to your portal to view and pay your invoice. If you require any assistance, please reach out directly to your Fleet Manager.</p><p>Thank you!<br>- Automated Trucking Team</p><p><em>Note: This is an automated email. Please do not respond to this email. If you require assistance, reach out directly to your Fleet Manager.</em></p>"
+    },
+    "due_today": {
+        "sms": "Your monthly Management fee is due. Please login to your portal to view and pay your invoice.",
+        "subject": "Reminder – Your Monthly Management Fee is Now Due",
+        "htmlBody": "<p>This is a reminder that your <strong>management fee</strong> is now due. Please log in to your portal to view your invoice and schedule payment. If you require access or need assistance, please reach out to your Fleet Manager directly.</p><p>We thank you for being a valued partner with Automated Trucking.</p><p>Best,<br>- Automated Trucking Team</p><p><em>Note: This is an automated email. Please do not respond to this email. If you require assistance, reach out directly to your Fleet Manager.</em></p>"
+    },
+    "24hrs_after": {
+        "sms": "Please login to your portal to pay your monthly management invoice to avoid any late fees or interruption in service.",
+        "subject": "Reminder: Past Due – Monthly Management Fee",
+        "htmlBody": "<p>Your <strong>Monthly Management Fee</strong> is now past due. Please log in to your portal and make a payment as soon as possible to avoid any late fees or service interruptions.</p><p>If you require assistance, please contact your Fleet Manager immediately.</p><p>Thank you for your prompt attention to this matter.</p><p>Best,<br>- Automated Trucking Team</p><p><em>Note: This is an automated email. Please do not respond to this email. If you require assistance, reach out directly to your Fleet Manager.</em></p>"
+    },
+    "48hrs_after": {
+        "sms": "Your Monthly Management Fee is now past due. Please log in to your portal and make a payment immediately to avoid late fees or service interruption.",
+        "subject": "Urgent: Past Due – Monthly Management Fee",
+        "htmlBody": "<p>Our records indicate that your <strong>Monthly Management Fee</strong> is now past due. Please log in to your portal to make a payment as soon as possible to avoid any late fees or service interruptions. If you have already made your payment, please disregard this notice.</p><p>If you require assistance, please contact your Fleet Manager immediately.</p><p>Thank you for your prompt attention to this matter.</p><p>Best,<br>- Automated Trucking Team</p><p><em>Note: This is an automated email. Please do not respond to this email. If you require assistance, reach out directly to your Fleet Manager.</em></p>"
+    },
+    "72hrs_after": {
+        "sms": "Reminder. You are now past due and a late fee will be applied to your management fee at the end of business day. Please login to your portal or reach out to your fleet manager for assistance.",
+        "subject": "Final Notice – Imminent Interruption *Past Due Monthly Management Fee",
+        "htmlBody": "<p>Your <strong>Monthly Management Fee</strong> remains unpaid, and a late fee may be applied to your balance. Immediate action is required to avoid further penalties or service interruptions.</p><p>Please log in to your portal to settle your balance or contact your Fleet Manager for assistance.</p><p>We appreciate your urgent attention to this matter.</p><p>Best,<br>- Automated Trucking Team</p><p><em>Note: This is an automated email. Please do not respond to this email. If you require assistance, reach out directly to your Fleet Manager.</em></p>"
+    }
+}

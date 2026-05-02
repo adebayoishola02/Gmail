@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+    app:
+        build: .
+        container_name: dispatchserver_gmail_app
+        restart: unless-stopped
+        working_dir: /var/www/html
+        volumes:
+            - ./src:/var/www/html
+        ports:
+            - "8093:8093"
+        command: php artisan serve --host=0.0.0.0 --port=8093
+        networks:
+            - dispatchserver_gmail_network
+        depends_on:
+            - db
+
+    db:
+        image: mysql:8.3
+        container_name: dispatchserver_gmail_db
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: dispatchserver_gmail
+            MYSQL_USER: rootuser
+            MYSQL_PASSWORD: rootpassword
+        ports:
+            - "8929:3306"
+        volumes:
+            - dispatchserver_gmail_dbdata:/var/lib/mysql
+        networks:
+            - dispatchserver_gmail_network
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: dispatchserver_gmail_phpmyadmin
+        restart: unless-stopped
+        environment:
+            PMA_HOST: db
+            PMA_PORT: 3306
+            PMA_USER: rootuser
+            PMA_PASSWORD: rootpassword
+        ports:
+            - "8120:80"
+        networks:
+            - dispatchserver_gmail_network
+        depends_on:
+            - db
+
+networks:
+    dispatchserver_gmail_network:
+
+volumes:
+    dispatchserver_gmail_dbdata:

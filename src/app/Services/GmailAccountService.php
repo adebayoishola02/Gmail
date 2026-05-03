@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Models\GmailAccount;
+use App\Models\GmailMessages;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 //Get auth code
 //https://accounts.google.com/o/oauth2/v2/auth?client_id=40227990769-ebm08pg7i8nsca8a1lvd0f0l3qmk2iva.apps.googleusercontent.com&redirect_uri=https://cronetic.com/google/callback&response_type=code&scope=https://mail.google.com/&access_type=offline&prompt=consent
@@ -126,8 +128,32 @@ class GmailAccountService
 
     public function delete(GmailAccount $account): bool
     {
+
         return DB::transaction(function () use ($account) {
-            return $account->delete(); // or forceDelete() if not soft-deleting
+
+            // Delete All Related Data (Nuclear Option)
+            $this->handleRelatedDataOnDisconnect($account);
+
+            // Delete All Related Data (keep records)
+            // $this->handleRelatedDataOnDisconnectSoft($account);
+
+            return $account->forceDelete(); // or delete() if soft-deleting
         });
+    }
+
+    private function handleRelatedDataOnDisconnectSoft(GmailAccount $account)
+    {
+        GmailMessages::where('account_uuid', $account->uuid)->update(['account_uuid' => null]);
+        Log::info("Gmail Account disconnected. Data preserved.", [
+            'account_uuid' => $account->uuid
+        ]);
+    }
+
+    private function handleRelatedDataOnDisconnect(GmailAccount $account)
+    {
+        GmailMessages::where('account_uuid', $account->uuid)->delete();
+        Log::info("Gmail Account + all related data deleted.", [
+            'account_uuid' => $account->uuid
+        ]);
     }
 }
